@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <!-- load the AJAX Google Viz API -->
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+        // load the API's corechart packge 
+        google.charts.load('current', {'packages': ['corechart']});
+        // set a callback function to run when the page loads
+        google.charts.setOnLoadCallback(drawChart); //we write drawchart
+
+        // create drawchart(); this function will create a data able
+        // or read one and create it, initiate a chart and draw it
+        function drawChart() {
+            //  get the data and put it in table format
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+                ['Mushrooms', 3],
+                ['Onions', 1],
+                ['Olives', 1],
+                ['Zucchini', 1],
+                ['Pepperoni', 2]
+            ]);
+
+            // 02 set chart options
+            var options = {
+                title: 'how much pizza I ate last night',
+                width: 400,
+                height: 300
+            };
+
+            //03 draw the chart with the set options
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        } //drawchart
+    </script>
+    </head>
+    <body>
+        <div id="char_div"></div>
+
+    </body>
+</html>
